@@ -1,0 +1,60 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+class Libro {
+private:
+    string titulo;
+    string autor;
+    int anioPublicacion;
+
+public:
+    Libro(string _titulo, string _autor, int _anioPublicacion);
+    void mostrarInformacion();
+    bool mismoAutor(const Libro& otroLibro) const;
+};
+
+Libro::Libro(string _titulo, string _autor, int _anioPublicacion) {
+    titulo = _titulo;
+    autor = _autor;
+    anioPublicacion = _anioPublicacion;
+}
+
+void Libro::mostrarInformacion() {
+    cout << "Título: " << titulo << endl;
+    cout << "Autor: " << autor << endl;
+    cout << "Año de publicación: " << anioPublicacion << endl;
+}
+
+bool Libro::mismoAutor(const Libro& otroLibro) const {
+    return autor == otroLibro.autor;
+}
+
+int main() {
+    Libro libro1("Cien años de soledad", "Gabriel Garcia Marquez", 1967);
+    Libro libro2("El amor en los tiempos del cólera", "Gabriel Garcia Marquez", 1985);
+    Libro libro3("El señor de los anillos", "J.R.R. Tolkien", 1954);
+
+    cout << "Información del libro 1:" << endl;
+    libro1.mostrarInformacion();
+
+    cout << "\nInformación del libro 2:" << endl;
+    libro2.mostrarInformacion();
+
+    cout << "\nInformación del libro 3:" << endl;
+    libro3.mostrarInformacion();
+
+    if (libro1.mismoAutor(libro2)) {
+        cout << "\nEl libro 1 y el libro 2 son del mismo autor." << endl;
+    } else {
+        cout << "\nEl libro 1 y el libro 2 no son del mismo autor." << endl;
+    }
+
+    if (libro1.mismoAutor(libro3)) {
+        cout << "El libro 1 y el libro 3 son del mismo autor." << endl;
+    } else {
+        cout << "El libro 1 y el libro 3 no son del mismo autor." << endl;
+    }
+
+    return 0;
+}
