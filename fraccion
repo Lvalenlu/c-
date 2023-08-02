@@ -1,0 +1,109 @@
+#include <iostream>
+using namespace std;
+
+class Fraccion {
+private:
+    int numerador;
+    int denominador;
+
+public:
+    Fraccion(int num, int den);
+    void simplificar();
+    Fraccion sumar(const Fraccion& otra) const;
+    Fraccion restar(const Fraccion& otra) const;
+    Fraccion multiplicar(const Fraccion& otra) const;
+    Fraccion dividir(const Fraccion& otra) const;
+    void mostrar() const;
+};
+
+int mcd(int a, int b) {
+    if (b == 0)
+        return a;
+    return mcd(b, a % b);
+}
+
+Fraccion::Fraccion(int num, int den) {
+    numerador = num;
+    denominador = den;
+    simplificar();
+}
+
+void Fraccion::simplificar() {
+    int divisor = mcd(numerador, denominador);
+    numerador /= divisor;
+    denominador /= divisor;
+
+    if (denominador < 0) {
+        // Mantenemos el signo en el numerador
+        numerador *= -1;
+        denominador *= -1;
+    }
+}
+
+Fraccion Fraccion::sumar(const Fraccion& otra) const {
+    int nuevoNumerador = numerador * otra.denominador + otra.numerador * denominador;
+    int nuevoDenominador = denominador * otra.denominador;
+    return Fraccion(nuevoNumerador, nuevoDenominador);
+}
+
+Fraccion Fraccion::restar(const Fraccion& otra) const {
+    int nuevoNumerador = numerador * otra.denominador - otra.numerador * denominador;
+    int nuevoDenominador = denominador * otra.denominador;
+    return Fraccion(nuevoNumerador, nuevoDenominador);
+}
+
+Fraccion Fraccion::multiplicar(const Fraccion& otra) const {
+    int nuevoNumerador = numerador * otra.numerador;
+    int nuevoDenominador = denominador * otra.denominador;
+    return Fraccion(nuevoNumerador, nuevoDenominador);
+}
+
+Fraccion Fraccion::dividir(const Fraccion& otra) const {
+    int nuevoNumerador = numerador * otra.denominador;
+    int nuevoDenominador = denominador * otra.numerador;
+    return Fraccion(nuevoNumerador, nuevoDenominador);
+}
+
+void Fraccion::mostrar() const {
+    cout << numerador << "/" << denominador;
+}
+
+int main() {
+    int num1, den1, num2, den2;
+
+    cout << "Ingrese el numerador de la primera fraccion: ";
+    cin >> num1;
+    cout << "Ingrese el denominador de la primera fraccion: ";
+    cin >> den1;
+
+    cout << "Ingrese el numerador de la segunda fraccion: ";
+    cin >> num2;
+    cout << "Ingrese el denominador de la segunda fraccion: ";
+    cin >> den2;
+
+    Fraccion fraccion1(num1, den1);
+    Fraccion fraccion2(num2, den2);
+
+    Fraccion suma = fraccion1.sumar(fraccion2);
+    Fraccion resta = fraccion1.restar(fraccion2);
+    Fraccion multiplicacion = fraccion1.multiplicar(fraccion2);
+    Fraccion division = fraccion1.dividir(fraccion2);
+
+    cout << "La suma de las fracciones es: ";
+    suma.mostrar();
+    cout << endl;
+
+    cout << "La resta de las fracciones es: ";
+    resta.mostrar();
+    cout << endl;
+
+    cout << "La multiplicacion de las fracciones es: ";
+    multiplicacion.mostrar();
+    cout << endl;
+
+    cout << "La division de las fracciones es: ";
+    division.mostrar();
+    cout << endl;
+
+    return 0;
+}
