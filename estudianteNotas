@@ -1,0 +1,55 @@
+#include <iostream>
+#include <string>
+#include <vector>
+
+using namespace std;
+
+class Estudiante{
+    private:
+        string nombre;
+        int edad;
+        vector<double> calificaciones;
+    public:
+        void promedio(int);
+        void mostrarInfo();
+        Estudiante(string, int, int, int);
+};
+
+Estudiante::Estudiante(string _nombre, int _edad, int _cantNotas, int _notas[_cantNotas]){
+    nombre = _nombre;
+    edad = _edad;
+    cantNotas = _cantNotas;
+    notas[] = _notas[_cantNotas];
+}
+
+void Estudiante::promedio(){
+    int sumaNotas, promedio;
+    sumaNotas = 0;
+    for(i=0; i < cantNotas; i++){
+        cout << "Ingrese la nota " << i << ":";
+        cin >> nota[i];
+        sumaNotas = sumaNotas + nota[i];
+    }
+    promedio = sumaNotas / cantNotas;
+}
+
+void Estudiante::mostrarInfo(){
+    cout << "Nombre: " << nombre << endl << "Edad:" << edad << endl << "Promedio:" << promedio << endl;
+}
+
+int main()
+{
+    int nombre, edad, cantNotas;
+    
+    cout << "Ingrese su nombre: ";
+    cin >> nombre;
+    cout << "Ingrese su edad: ";
+    cin >> edad;
+    cout << "¿Cuántas notas va a promediar?";
+    cin >> cantNotas;
+    
+    Estudiantes est1(nombre, edad, cantNotas, notas[cantNotas]);
+    est1.promedio();
+    est1.mostrarInfo();
+
+}
