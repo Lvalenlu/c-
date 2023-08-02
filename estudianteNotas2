@@ -1,0 +1,58 @@
+#include <iostream>
+#include <string>
+#include <vector>
+using namespace std;
+
+class Estudiante {
+private:
+    string nombre;
+    int edad;
+    vector<int> calificaciones;
+
+public:
+    Estudiante(string _nombre, int _edad, vector<int> _calificaciones);
+    double calcularPromedio() const;
+    void mostrarInformacion() const;
+};
+
+Estudiante::Estudiante(string _nombre, int _edad, vector<int> _calificaciones) {
+    nombre = _nombre;
+    edad = _edad;
+    calificaciones = _calificaciones;
+}
+
+double Estudiante::calcularPromedio() const {
+    int sumaCalificaciones = 0;
+    for (int calificacion : calificaciones) {
+        sumaCalificaciones += calificacion;
+    }
+    return static_cast<double>(sumaCalificaciones) / calificaciones.size();
+}
+
+void Estudiante::mostrarInformacion() const {
+    cout << "Nombre: " << nombre << endl;
+    cout << "Edad: " << edad << endl;
+    cout << "Calificaciones:" << endl;
+    for (int calificacion : calificaciones) {
+        cout << calificacion << " ";
+    }
+    cout << endl;
+}
+
+int main() {
+    vector<int> calificaciones1 = { 85, 90, 78, 92, 88 };
+    Estudiante estudiante1("Juan Perez", 20, calificaciones1);
+
+    vector<int> calificaciones2 = { 75, 82, 95, 88, 79 };
+    Estudiante estudiante2("Maria Gomez", 22, calificaciones2);
+
+    cout << "Información del estudiante 1:" << endl;
+    estudiante1.mostrarInformacion();
+    cout << "Promedio del estudiante 1: " << estudiante1.calcularPromedio() << endl;
+
+    cout << "\nInformación del estudiante 2:" << endl;
+    estudiante2.mostrarInformacion();
+    cout << "Promedio del estudiante 2: " << estudiante2.calcularPromedio() << endl;
+
+    return 0;
+}
