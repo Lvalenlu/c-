@@ -1,0 +1,72 @@
+#include <iostream>
+
+using namespace std;
+
+class CuentaBancaria{
+    private:
+        int saldo;
+        string titular;
+        int monto;
+    public:
+        void depositar();
+        void retirar();
+        void mostrar();
+        CuentaBancaria(int, string, int); //Constrcutor
+};
+
+CuentaBancaria::CuentaBancaria(int _saldo, string _titular, int _monto){
+    saldo = _saldo;
+    titular = _titular;
+    monto = _monto;
+}
+
+void CuentaBancaria::depositar(){
+    cout << titular << " ingrese el monto a depositar: ";
+    cin >> monto;
+    saldo = saldo + monto;
+}
+
+void CuentaBancaria::retirar(){
+    cout << titular << " ingrese el monto a retirar: ";
+    cin >> monto;
+    saldo = saldo - monto;
+}
+
+void CuentaBancaria::mostrar(){
+    cout << titular << " su saldo actual es: " << saldo << endl;
+}
+
+int main()
+{
+    int i, opc;
+    CuentaBancaria per1(0, "Laura", 0);
+    do{
+        cout << "Elija una opción: " << endl << "1. Depositar dinero" << endl << "2. Retirar dinero" << endl << "3. Mostrar saldo" << endl << "4.Salir" << endl << "->";
+        cin >> opc;
+        switch(opc){
+            case 1:
+            per1.depositar();
+            break;
+            case 2:
+            per1.retirar();
+            break;
+            case 3:
+            per1.mostrar();
+            break;
+            case 4:
+            cout << "Fin de transacción" << endl;
+            break;
+            default:
+            cout << "Opción no valida intente nuevamente" << endl;
+            break;
+        }
+        
+        cout << "¿Desea realizar otra acción? Escriba 1" << endl << "->";
+        cin >> i;
+        
+    }while(i==1);
+    
+    cout << "Fin de transacción" << endl;
+    
+    return 0;
+}
