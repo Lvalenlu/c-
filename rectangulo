@@ -1,0 +1,38 @@
+#include <iostream>
+
+using namespace std;
+
+class Rectangulo{
+    private:
+        int ancho;
+        int altura;
+    public:
+        void area();
+        void perimetro();
+        Rectangulo(int, int); //Metodo constructor
+};
+
+Rectangulo::Rectangulo(int _ancho, int _altura){
+    ancho = _ancho;
+    altura = _altura;
+}
+
+void Rectangulo::area(){
+    int area = ancho * altura;
+    cout << "El area del primer rectangulo es: " << area << endl;
+}
+
+void Rectangulo::perimetro(){
+    int perimetro = (2*ancho) + (2*altura);
+    cout << "El perimetro del rectangulo es: " << perimetro;
+    
+}
+
+int main()
+{
+    Rectangulo obj1(10, 20);
+    obj1.area();
+    Rectangulo obj2(16, 12);
+    obj2.perimetro();
+    return 0;
+}
