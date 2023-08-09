@@ -4,15 +4,15 @@
 using namespace std;
 
 class Estudiante {
-private:
-    string nombre;
-    int edad;
-    vector<int> calificaciones;
+    private:
+        string nombre;
+        int edad;
+        vector<int> calificaciones;
 
-public:
-    Estudiante(string _nombre, int _edad, vector<int> _calificaciones);
-    double calcularPromedio() const;
-    void mostrarInformacion() const;
+    public:
+        double calcularPromedio() const;
+        void mostrarInformacion() const;
+        Estudiante(string _nombre, int _edad, vector<int> _calificaciones);
 };
 
 Estudiante::Estudiante(string _nombre, int _edad, vector<int> _calificaciones) {
